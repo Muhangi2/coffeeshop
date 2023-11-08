@@ -1,6 +1,7 @@
+import "package:flutter/foundation.dart";
 import "package:my_flutter_app/models/drink.dart";
 
-class TeaShop {
+class TeaShop extends ChangeNotifier {
   //list of drinks for sale
   final List<Drink> _shop = [
     Drink(
@@ -17,16 +18,15 @@ class TeaShop {
   //get drinks from  the user_cart
   List<Drink> get car => _cart;
 
-
-
-  
   //add to user_cart
   void addToCart(Drink drink) {
     _cart.add(drink);
+    notifyListeners();
   }
 
   //remove from the cart
   void removeFromCart(Drink drink) {
     _cart.remove(drink);
+    notifyListeners();
   }
 }
